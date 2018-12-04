@@ -3,9 +3,7 @@ Part 1
 :white_check_mark:
 
     [steve@localhost 04]$ ./part1.pl puzzle-input.txt
-    sleepiest was guard 1777 with 379 minutes
-    minute was 48 with value 11
-    answer is 1777 * 48 = 85296
+    Answer is 1777 * 48 = 85296
     [steve@localhost 04]$ 
 
 Part 2
