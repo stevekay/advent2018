@@ -2,21 +2,19 @@
 open(A,"sort < $ARGV[0] |")||die "unable to open $ARGV[0] : $!";
 while(<A>) {
  ($kak,$year,$month,$day,$hour,$min)=split(/\[|\-| |:|\]/);
- if($_ =~ /Guard #(\d+) begins shift/) { $guard=$1 }
- if($_ =~ /falls asleep/) { $asleep=$min }
- if($_ =~ /wakes up/) {
-  $sleep{$guard}+=$min-$asleep-1;
-  for $x ( $asleep .. $min - 1 ) {
-   $a{$guard}{$x}++;
-   $b{$x}{$guard}++;
-  }
+ if(/Guard #(\d+) begins shift/) { $guard=$1 }
+ if(/falls asleep/) { $asleep=$min }
+ next unless /wakes up/;
+ $sleep{$guard}+=--$min-$asleep;
+ for $x ($asleep..$min) {
+  $a{$guard}{$x}++;
+  $b{$x}{$guard}++;
  }
 }
-close A;
 
 foreach $x (sort keys %b) {
  foreach $y (sort keys %{$b{$x}}) {
-  if($b{$x}{$y} > $m) { $m = $b{$x}{$y}; $g=$y ; $c=$x}
+  if($b{$x}{$y} > $m) {$m=$b{$x}{$y};$g=$y;$c=$x}
  }
 }
 
