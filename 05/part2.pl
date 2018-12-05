@@ -10,7 +10,7 @@
 
 open(A,$ARGV[0]) || die "unable to open $ARGV[0] : $!";
 $x=<A>;
-for $l ( 'a' .. 'd' ) {
+for $l ( 'a' .. 'z' ) {
  print scalar localtime," processing char $l\n";
  $_=$x;
  #print " pre-removal, was  $_";
@@ -36,9 +36,16 @@ for $l ( 'a' .. 'd' ) {
   }
   if($exploded==0) {
    print " -> answer is ",length($a)-1,"\n";
+   $results{$l}=length($a)-1;
    $exploded=1;
   } else {
    $exploded=0;
   }
  }
 }
+$lowest=9999999999999;
+foreach (sort keys %results) {
+ printf "%s %8d\n",$_,$results{$_};
+ if($results{$_} < $lowest) { $lowest=$results{$_} }
+}
+print "lowest was ",$lowest,"\n";
