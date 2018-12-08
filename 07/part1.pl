@@ -1,23 +1,18 @@
 #!/bin/perl
-open(A,$ARGV[0])||die;
+open(A,$ARGV[0]);
 while(<A>) {
- unless(/^Step (.) must be finished before step (.) can begin\./) {
-  die "bad line $_"
- }
- $dep=$1; # dep = dependency
- $job=$2; # job = actual job
-
- $joblist{$job}{$dep}='x';
- $chars{$dep}='y';
- $chars{$job}='y';
+ ($dep,$job)=((split(/ /))[1],(split(/ /))[7]);
+ $joblist{$job}{$dep}='';
+ $chars{$dep}='';
+ $chars{$job}='';
 }
 
 $answer='';
 while(keys %joblist) {
-	foreach $job (sort keys %chars) {
-		next if(keys %{$joblist{$job}});
-		$answer .= $job;
-		$done = $job;
+	foreach (sort keys %chars) {
+		next if(keys %{$joblist{$_}});
+		print;
+		$done = $_;
 		last;
 	}
 
@@ -25,12 +20,9 @@ while(keys %joblist) {
 	delete $chars{$done};
 
 	foreach $job (keys %joblist) {
-		for $dep (keys %{$joblist{$job}}) {
-			if($dep eq $done) {
-				delete $joblist{$job}{$dep};
-			}
+		for (keys %{$joblist{$job}}) {
+			next if($_ ne $done);
+			delete $joblist{$job}{$_};
 		}
 	}
 }
-
-print "$answer\n";
