@@ -1,0 +1,86 @@
+Part 1
+
+:white_check_mark:
+
+    [steve@localhost 09]$ ./part1.pl 486 70833
+    373597
+    [steve@localhost 09]$
+
+Part 2
+
+:white_check_mark:
+
+    [steve@localhost 09]$ ./part2.pl 486 7083300
+    Sun Dec 16 20:13:30 2018 marble 100000 (1%)
+    Sun Dec 16 20:13:30 2018 marble 200000 (2%)
+    Sun Dec 16 20:13:31 2018 marble 300000 (4%)
+    Sun Dec 16 20:13:31 2018 marble 400000 (5%)
+    Sun Dec 16 20:13:32 2018 marble 500000 (7%)
+    Sun Dec 16 20:13:33 2018 marble 600000 (8%)
+    Sun Dec 16 20:13:33 2018 marble 700000 (9%)
+    Sun Dec 16 20:13:34 2018 marble 800000 (11%)
+    Sun Dec 16 20:13:34 2018 marble 900000 (12%)
+    Sun Dec 16 20:13:35 2018 marble 1000000 (14%)
+    Sun Dec 16 20:13:36 2018 marble 1100000 (15%)
+    Sun Dec 16 20:13:37 2018 marble 1200000 (16%)
+    Sun Dec 16 20:13:37 2018 marble 1300000 (18%)
+    Sun Dec 16 20:13:38 2018 marble 1400000 (19%)
+    Sun Dec 16 20:13:38 2018 marble 1500000 (21%)
+    Sun Dec 16 20:13:39 2018 marble 1600000 (22%)
+    Sun Dec 16 20:13:39 2018 marble 1700000 (24%)
+    Sun Dec 16 20:13:40 2018 marble 1800000 (25%)
+    Sun Dec 16 20:13:41 2018 marble 1900000 (26%)
+    Sun Dec 16 20:13:41 2018 marble 2000000 (28%)
+    Sun Dec 16 20:13:42 2018 marble 2100000 (29%)
+    Sun Dec 16 20:13:43 2018 marble 2200000 (31%)
+    Sun Dec 16 20:13:44 2018 marble 2300000 (32%)
+    Sun Dec 16 20:13:44 2018 marble 2400000 (33%)
+    Sun Dec 16 20:13:45 2018 marble 2500000 (35%)
+    Sun Dec 16 20:13:46 2018 marble 2600000 (36%)
+    Sun Dec 16 20:13:46 2018 marble 2700000 (38%)
+    Sun Dec 16 20:13:47 2018 marble 2800000 (39%)
+    Sun Dec 16 20:13:47 2018 marble 2900000 (40%)
+    Sun Dec 16 20:13:48 2018 marble 3000000 (42%)
+    Sun Dec 16 20:13:49 2018 marble 3100000 (43%)
+    Sun Dec 16 20:13:49 2018 marble 3200000 (45%)
+    Sun Dec 16 20:13:50 2018 marble 3300000 (46%)
+    Sun Dec 16 20:13:50 2018 marble 3400000 (48%)
+    Sun Dec 16 20:13:51 2018 marble 3500000 (49%)
+    Sun Dec 16 20:13:52 2018 marble 3600000 (50%)
+    Sun Dec 16 20:13:52 2018 marble 3700000 (52%)
+    Sun Dec 16 20:13:53 2018 marble 3800000 (53%)
+    Sun Dec 16 20:13:53 2018 marble 3900000 (55%)
+    Sun Dec 16 20:13:54 2018 marble 4000000 (56%)
+    Sun Dec 16 20:13:55 2018 marble 4100000 (57%)
+    Sun Dec 16 20:13:55 2018 marble 4200000 (59%)
+    Sun Dec 16 20:13:56 2018 marble 4300000 (60%)
+    Sun Dec 16 20:13:56 2018 marble 4400000 (62%)
+    Sun Dec 16 20:13:57 2018 marble 4500000 (63%)
+    Sun Dec 16 20:14:00 2018 marble 4600000 (64%)
+    Sun Dec 16 20:14:00 2018 marble 4700000 (66%)
+    Sun Dec 16 20:14:01 2018 marble 4800000 (67%)
+    Sun Dec 16 20:14:01 2018 marble 4900000 (69%)
+    Sun Dec 16 20:14:02 2018 marble 5000000 (70%)
+    Sun Dec 16 20:14:03 2018 marble 5100000 (72%)
+    Sun Dec 16 20:14:03 2018 marble 5200000 (73%)
+    Sun Dec 16 20:14:04 2018 marble 5300000 (74%)
+    Sun Dec 16 20:14:04 2018 marble 5400000 (76%)
+    Sun Dec 16 20:14:05 2018 marble 5500000 (77%)
+    Sun Dec 16 20:14:06 2018 marble 5600000 (79%)
+    Sun Dec 16 20:14:06 2018 marble 5700000 (80%)
+    Sun Dec 16 20:14:07 2018 marble 5800000 (81%)
+    Sun Dec 16 20:14:07 2018 marble 5900000 (83%)
+    Sun Dec 16 20:14:08 2018 marble 6000000 (84%)
+    Sun Dec 16 20:14:09 2018 marble 6100000 (86%)
+    Sun Dec 16 20:14:09 2018 marble 6200000 (87%)
+    Sun Dec 16 20:14:10 2018 marble 6300000 (88%)
+    Sun Dec 16 20:14:10 2018 marble 6400000 (90%)
+    Sun Dec 16 20:14:11 2018 marble 6500000 (91%)
+    Sun Dec 16 20:14:12 2018 marble 6600000 (93%)
+    Sun Dec 16 20:14:12 2018 marble 6700000 (94%)
+    Sun Dec 16 20:14:13 2018 marble 6800000 (96%)
+    Sun Dec 16 20:14:13 2018 marble 6900000 (97%)
+    Sun Dec 16 20:14:14 2018 marble 7000000 (98%)
+    2954067253
+    [steve@localhost 09]$
+    
