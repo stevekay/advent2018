@@ -3,6 +3,7 @@ import sys
 
 grid=[]
 carts=[]
+removals=[]
 
 # read the file
 with open(sys.argv[1]) as fp:
@@ -26,7 +27,7 @@ for y in range(0,len(grid)):
 			carts.append( [ y,x,"E",0 ])
 			grid[y][x]='-'
 
-while(1):
+while(len(carts)>1):
 	carts = sorted(carts, key = lambda x: (x[0], x[1]))
 
 	for a in range (0,len(carts)):
@@ -84,11 +85,27 @@ while(1):
 			if grid[y][x] == '\\':
 				dir='E'
 
-		for z in carts:
-			if z[0] == y and z[1] == x:
-				sys.exit("collision at %d,%d" % ( x,y ))
-
+		for z in range(0,len(carts)):
+			if carts[z][0] == y and carts[z][1] == x:
+				removals.append(z)
+				removals.append(a)
+				
 		carts[a][1]=x
 		carts[a][0]=y
 		carts[a][2]=dir
 		carts[a][3]=turn
+
+	# must be an easier way than this hack
+	if removals:
+		foo=[]
+		for x in range(0,len(carts)):
+			keeper=1
+			for y in removals:
+				if x==y:
+					keeper=0
+			if keeper==1:
+				foo.append(carts[x])
+		carts=foo
+		removals=[]
+
+print("last cart is (%d,%d)" % (carts[0][1],carts[0][0]) )
