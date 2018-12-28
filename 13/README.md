@@ -8,7 +8,7 @@ Part 1
 
 Part 2
 
-    :white_check_mark:
+:white_check_mark:
 
     [steve@localhost 13]$ ./part2.py puzzle-input.txt
     last cart is (132,26)
