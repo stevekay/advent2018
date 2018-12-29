@@ -4,6 +4,9 @@ import sys
 grid=[]
 carts=[]
 removals=[]
+firstcollision=1
+
+turndetails = { 'E': 'NES', 'W': 'SWN', 'N': 'WNE', 'S': 'ESW' }
 
 # read the file
 with open(sys.argv[1]) as fp:
@@ -14,52 +17,20 @@ with open(sys.argv[1]) as fp:
 for y in range(0,len(grid)):
 	for x in range(0,len(grid[y])):
 		c = grid[y][x]
-		if c == 'v':
-			carts.append( [ y,x,"S",0 ])
-			grid[y][x]='|'
-		elif c == '^':
-			carts.append( [ y,x,"N",0 ])
-			grid[y][x]='|'
-		elif c == '<':
-			carts.append( [ y,x,"W",0 ])
-			grid[y][x]='-'
-		elif c == '>':
-			carts.append( [ y,x,"E",0 ])
-			grid[y][x]='-'
+		if c in [ 'v', '^', '<', '>']:
+			carts.append( [ y,x,c.translate(str.maketrans('v^<>','SNWE')),0 ])
+			grid[y][x]=c.translate(str.maketrans('v^<>','||--'))
 
 while(len(carts)>1):
 	carts = sorted(carts, key = lambda x: (x[0], x[1]))
 
 	for a in range (0,len(carts)):
-		y=carts[a][0]
-		x=carts[a][1]
-		dir=carts[a][2]
-		turn=carts[a][3]
+		y, x, dir, turn = carts[a]
 
 		if grid[y][x] == '+':
-			if dir == 'E':
-				if turn==0:
-					dir = 'N'
-				if turn==2:
-					dir = 'S'
-			elif dir == 'W':
-				if turn==0:
-					dir = 'S'
-				if turn==2:
-					dir = 'N'
-			elif dir == 'N':
-				if turn==0:
-					dir = 'W'
-				if turn==2:
-					dir = 'E'
-			elif dir == 'S':
-				if turn==0:
-					dir = 'E'
-				if turn==2:
-					dir = 'W'
+			dir=turndetails[dir][turn%3]
+			
 			turn+=1
-			if turn == 3:
-				turn=0
 		if dir == 'E':
 			x += 1
 			if grid[y][x] == '\\':
@@ -85,27 +56,21 @@ while(len(carts)>1):
 			if grid[y][x] == '\\':
 				dir='E'
 
-		for z in range(0,len(carts)):
-			if carts[z][0] == y and carts[z][1] == x:
+		for z in carts:
+			if z[0]==y and z[1]==x:
+				if firstcollision:
+					print("first collision at (%d,%d)" %(x,y))
+					firstcollision=0
 				removals.append(z)
-				removals.append(a)
-				
+				removals.append(carts[a])
+		
 		carts[a][1]=x
 		carts[a][0]=y
 		carts[a][2]=dir
 		carts[a][3]=turn
 
-	# must be an easier way than this hack
 	if removals:
-		foo=[]
-		for x in range(0,len(carts)):
-			keeper=1
-			for y in removals:
-				if x==y:
-					keeper=0
-			if keeper==1:
-				foo.append(carts[x])
-		carts=foo
+		carts = [e for e in carts if e not in removals]
 		removals=[]
 
 print("last cart is (%d,%d)" % (carts[0][1],carts[0][0]) )
