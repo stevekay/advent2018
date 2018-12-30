@@ -7,6 +7,10 @@ removals=[]
 firstcollision=1
 
 turndetails = { 'E': 'NES', 'W': 'SWN', 'N': 'WNE', 'S': 'ESW' }
+cornerdetails = { 'E': { '\\': 'S', '/': 'N', '-':'E', '+':'E', 'x':1, 'y':0 },
+                  'W': { '\\': 'N', '/': 'S', '-':'W', '+':'W', 'x':-1, 'y':0 },
+                  'N': { '/': 'E', '\\': 'W', '|':'N', '+':'N', 'x':0, 'y':-1 },
+                  'S': { '/': 'W', '\\': 'E', '|':'S', '+':'S', 'x':0, 'y':1 } }
 
 # read the file
 with open(sys.argv[1]) as fp:
@@ -28,49 +32,30 @@ while(len(carts)>1):
 		y, x, dir, turn = carts[a]
 
 		if grid[y][x] == '+':
-			dir=turndetails[dir][turn%3]
-			
-			turn+=1
-		if dir == 'E':
-			x += 1
-			if grid[y][x] == '\\':
-				dir='S'
-			if grid[y][x] == '/':
-				dir='N'
-		elif dir == 'W':
-			x -= 1
-			if grid[y][x] == '\\':
-				dir='N'
-			if grid[y][x] == '/':
-				dir='S'
-		elif dir == 'N':
-			y -= 1
-			if grid[y][x] == '/':
-				dir='E'
-			if grid[y][x] == '\\':
-				dir='W'
-		elif dir == 'S':
-			y += 1
-			if grid[y][x] == '/':
-				dir='W'
-			if grid[y][x] == '\\':
-				dir='E'
+			dir = turndetails[dir][turn%3]
+			turn += 1
+
+		dir = cornerdetails[dir][grid[y][x]]
+		x += cornerdetails[dir]['x']
+		y += cornerdetails[dir]['y']
 
 		for z in carts:
-			if z[0]==y and z[1]==x:
+			if z[0] == y and z[1] == x:
 				if firstcollision:
 					print("first collision at (%d,%d)" %(x,y))
-					firstcollision=0
+					if len(carts) == 2:
+						sys.exit("no carts left")
+					firstcollision = 0
 				removals.append(z)
 				removals.append(carts[a])
-		
-		carts[a][1]=x
-		carts[a][0]=y
-		carts[a][2]=dir
-		carts[a][3]=turn
+
+		carts[a][1] = x
+		carts[a][0] = y
+		carts[a][2] = dir
+		carts[a][3] = turn
 
 	if removals:
 		carts = [e for e in carts if e not in removals]
-		removals=[]
+		removals = []
 
 print("last cart is (%d,%d)" % (carts[0][1],carts[0][0]) )

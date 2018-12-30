@@ -11,5 +11,6 @@ Part 2
 :white_check_mark:
 
     [steve@localhost 13]$ ./part2.py puzzle-input.txt
+    first collision at (83,106)
     last cart is (132,26)
-    [steve@localhost 13]$ 
+    [steve@localhost 13]$
